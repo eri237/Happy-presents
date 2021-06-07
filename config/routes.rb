@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'search/search'
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
+  }
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root :to => "homes#top"
+  root to: 'homes#top'
   get "home/about" => "homes#about"
 
   resources :items, only: [:index, :show, :edit, :create, :destroy, :update]do

@@ -1,0 +1,18 @@
+= form_with model:item,local:true do |f|
+  .form-group
+    = f.label :欲しいプレゼント
+    = f.text_field :name, class: 'form-control item_name'
+  .form-group
+    = f.label :詳しい説明
+    = f.text_area :description, class: 'form-control item_description'
+  .form-group
+    = f.label :商品画像
+    |
+    = f.attachment_field :image, placeholder: "image"
+
+  .form-group
+    = f.label :状況
+    = f.select :is_active, ["ほしい", "おねだり中", "もらえた！", "自分で買った"] ,class: "btn btn-primary"
+
+  .form-group
+    = f.submit "Present create", class: 'btn btn-success'

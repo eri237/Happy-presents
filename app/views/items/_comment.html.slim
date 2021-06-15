@@ -1,0 +1,18 @@
+table
+  - @item.item_comments.each do |item_comment|
+    - item_comment_user = item_comment.user
+    tr
+      td
+        = link_to user_path(item_comment_user), class: "user_#{item_comment_user.id}" do
+          = attachment_image_tag item_comment_user, :icon, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50"
+          br
+          = item_comment_user.name
+      td
+        = item_comment.comment
+      - if current_user == item_comment_user
+        td
+          = link_to 'Destroy', item_item_comment_path(item_comment.item_id, item_comment.id), class: 'btn-sm btn-danger', method: :delete
+= form_with model:[@item,@item_comment], local: true do |f|
+  = f.text_area :comment, size:"90x2"
+  br
+  = f.submit '送信'

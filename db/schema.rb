@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_07_121206) do
+ActiveRecord::Schema.define(version: 2021_06_10_122819) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2021_06_07_121206) do
     t.integer "user_id", null: false
     t.string "name", null: false
     t.text "description", null: false
-    t.string "image"
+    t.string "image_id"
     t.integer "is_active", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2021_06_07_121206) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name", null: false
-    t.string "icon"
+    t.string "icon_id"
     t.date "birthday", null: false
     t.integer "now_age"
     t.string "gender", null: false

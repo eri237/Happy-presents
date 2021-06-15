@@ -1,0 +1,13 @@
+section
+.inner
+  h2
+	.section-ttl
+	|本当に退会しますか？
+
+	h3
+	.text-center
+	|退会すると、会員登録情報や<br>これまでの投稿が閲覧できなくなります。<br>退会する場合は、「退会する」をクリックしてください。
+
+	.flex.justify-around.mt2
+		=button_to "マイページに戻る", mypage_path, method: :get, class: "btn btn-primary"
+		=button_to "退会する", withdraw_path, method: :patch, "data-confirm" => "OKを押すと退会処理がされます。本当によろしいですか？", class: "btn btn-danger"

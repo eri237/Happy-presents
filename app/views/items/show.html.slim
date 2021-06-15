@@ -1,0 +1,37 @@
+.container.px-5.px-sm-0
+  .row
+    .col-md-3
+      h2
+        | Profile
+      = render 'users/profile', user: current_user
+      h2.mt-3
+        | New presents
+      = render 'form', item: Item.new
+    .col-md-8.offset-md-1
+      h2
+      | 投稿詳細 <br>
+
+      = attachment_image_tag(@item, :image, format: "jpeg", fallback: "no_image.jpg", class: "item_image")
+
+      table
+        tr
+          td
+            |欲しいプレゼント:
+            = @item.name
+        tr
+          td
+            |詳しい内容:
+            = @item.description
+        tr
+					td
+					  |状況:
+					  = @item.is_active
+					td.favorite-btn = render "favorites/favorite", item: @item
+					td
+					  |コメント数:
+					  = @item.item_comments.count
+					- if @item.user == current_user
+					  td= link_to 'Edit', edit_item_path(@item), class: "btn btn-sm btn-success edit_item_#{@item.id}"
+					  td= link_to 'Destroy', item_path(@item), method: :delete, data: { confirm: "「#{@item.name}」を削除してよろしいですか？" }, class: "btn btn-sm btn-danger destroy_item_#{@item.id}"
+
+					= render 'items/comment', item: @item,item_comment: @item_comment

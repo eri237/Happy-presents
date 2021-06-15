@@ -1,0 +1,37 @@
+.container
+  h2
+    i.fas.fa-user-edit
+    | 登録情報編集
+  br
+  = form_with model: @user, url:update_path, local: true do |f|
+    = attachment_image_tag @user, :icon, class: "img-square", fallback: "no-image-icon.jpg", size:"100x100"
+    .form-group
+      = f.label :icon, "User icon"
+      br
+      = f.attachment_field :icon, placeholder: "user icon"
+    .form-group
+      = f.label :name, "Name"
+      br
+      = f.text_field :name, class: "form-control name"
+    .form-group
+      = f.label :introduction
+      = f.text_area :introduction, class: "form-control introduction"
+    .form-group
+      = f.label :email, "Email"
+      br
+      = f.email_field :email, class: "form-control email"
+    .form-group
+      = f.label :gender, "gender"
+      br
+      = f.select :gender, ["男性", "女性", "その他"] ,class: "btn btn-primary"
+    |
+    .form-group
+      |
+      = f.label :birthday, "Birthday"
+      br
+      = f.text_field :birthday, class: "form-control birthday"
+    .row
+      .col-xs-3.mr-5
+        = f.submit "編集内容を保存" ,class:"btn btn-primary"
+.col-xs-3
+  =button_to "退会する", confirm_unsubscribe_path, method: :get, class: "btn btn-danger"

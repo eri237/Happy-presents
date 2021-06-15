@@ -1,0 +1,48 @@
+.container
+  .row
+    .col-xs-9
+      h4[style="width: 250px;background-color: #f0f6da; text-align: center;"]
+        | 新規登録
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = render "users/shared/error_messages", resource: resource
+        .field
+          = f.label :name, "Name"
+          br
+          = f.text_field :name, autofocus: true, autocomplete: "name"
+        .field
+          = f.label :email, "Email"
+          br
+          = f.email_field :email, autofocus: true, autocomplete: "email"
+        .field
+          = f.label :gender, "gender"
+          br
+          = f.select :gender, ["男性", "女性", "その他"] ,class: "btn btn-primary"
+        |  　
+        .field
+          |  　
+          = f.label :birthday, "Birthday"
+          br
+          = f.text_field :birthday, autofocus: true, autocomplete: "birthday"
+        .field
+          = f.label :icon, "User icon"
+          br
+          = f.attachment_field :icon, placeholder: "user icon"
+        .field
+          = f.label :password, "password（６文字以上）"
+          br
+          - if @minimum_password_length
+
+          = f.password_field :password, autocomplete: "new-password"
+        .field
+          = f.label :password_confirmation, "password（確認用）"
+          br
+          = f.password_field :password_confirmation, autocomplete: "new-password"
+        .actions.text-center
+          = f.submit "新規登録", class: "btn btn-success "
+  .row
+    h4[style="width: 180px;background-color: #f0f6da; text-align: center;"]
+      | 既に登録済の方
+  .row
+    = link_to "こちら", new_session_path(resource_name)
+    span
+      | からログインしてください。

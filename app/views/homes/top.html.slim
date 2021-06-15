@@ -1,0 +1,39 @@
+.container
+  .row
+    h1
+      |Welcome to Happy-presents!
+    br
+    h3
+    .text-center
+      |新規ご登録いただけば、0歳から18歳の子供たちが欲しいプレゼントを画像付きで投稿するサイトです。<br>PCやスマートホンが扱えない年齢の場合は近親者が投稿可能です。<br>子供たちにプレゼントを渡したい方々、ぜひご活用ください。
+
+  .row
+    h2
+      |投稿一覧
+
+    table.table.table-hover.table-inverse
+        thead
+          tr
+            th
+              |投稿日
+            th
+              |性別
+            th
+              |年齢
+            th
+            th
+              |欲しいプレゼント
+            th
+              |詳しい説明
+            th[colspan="3"]
+        tbody
+        - @items.each do |item|
+          tr
+            td= item.created_at.strftime('%Y/%m/%d %H:%M')
+            td= item.user.gender
+            td= (Date.today.strftime("%Y%m%d").to_i - item.user.birthday.strftime("%Y%m%d").to_i) / 10000
+            td= attachment_image_tag(item, :image, :fill, 50, 50, fallback: "no-image-mini.jpg")
+            td= item.name
+            td= item.description
+            td.favorite-btn
+              = item.favorites.count

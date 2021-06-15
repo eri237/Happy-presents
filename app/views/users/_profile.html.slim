@@ -1,0 +1,48 @@
+.row
+  - if current_user != user
+    - if current_user.following?(user)
+      = link_to "フォロー外す", user_relationships_path(user.id), method: :delete
+    - else
+      = link_to "フォローする", user_relationships_path(user.id), method: :post
+table.table
+  tr
+    = attachment_image_tag(user, :icon, :fill, 100, 100, fallback: "no-image-icon.jpg")
+  tr
+    th
+    | 名前
+    th
+      = user.name
+  tr
+    th
+      | 自己紹介
+    th
+      = user.introduction
+  tr
+    th
+      | 生年月日
+    th
+      = user.birthday
+  tr
+    th
+      | 性別
+    th
+      = user.gender
+  tr
+    th
+      | Email
+    th
+      = user.email
+  tr
+    th
+  tr
+    th
+      = user.followings.count
+    th
+      |フォロー中
+  tr
+    th
+      = user.followers.count
+    th
+     |フォロワー
+
+

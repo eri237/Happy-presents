@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: {
-    registrations: 'users/registrations',
-    sessions: 'users/sessions'
-  }
-    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
   root to: 'homes#top'
   get "home/about" => "homes#about"
 
@@ -14,17 +8,25 @@ Rails.application.routes.draw do
     resources :item_comments, only: [:create, :destroy]
   end
 
+
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
+  }
+
+  get 'user/mypage' => 'users#mypage', as: 'mypage', format: false
+  get 'user/mypage/edit' => 'users#edit', as: 'edit', format: false
+  patch 'user/mypage/update' => 'users#update', as: 'update', format: false
+  get 'user/unsubscribe' => 'users#unsubscribe', as: 'confirm_unsubscribe'
+  patch 'user/withdraw' => 'users#withdraw', as: 'withdraw'
+
   resources :users, only: [:index, :show] do
   	resource :relationships, only: [:create, :destroy]
   # 	get 'followings' => 'relationships#followings', as: 'followings' #余裕があれば
   # 	get 'followers' => 'relationships#followers', as: 'followers' # 余裕があれば
   end
 
-  get 'user/mypage' => 'users#mypage', as: 'mypage'
-  get 'user/mypage/edit' => 'users#edit', as: 'edit'
-  patch 'user' => 'users#update', as: 'update'
-  get 'user/unsubscribe' => 'users#unsubscribe', as: 'confirm_unsubscribe'
-  patch 'user/withdraw' => 'users#withdraw', as: 'withdraw'
+
 
   get '/search', to: 'search#search'
 

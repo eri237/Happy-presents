@@ -4,7 +4,7 @@
       h4.mt-3
         | New presents
       = render 'items/form', item: @item
-    .col-md-8.offset-md-1
+    .col-md-9
       h4
         | 登録者一覧
       table.table.table-hover.table-inverse
@@ -29,7 +29,10 @@
         -@users.each do |user|
           tr
             td= attachment_image_tag(user, :icon, :fill, 50, 50, fallback: "no-image-icon.jpg")
-            td= link_to user.name, user_path(user), class: "user_#{user.id}"
+            - if current_user != user
+              td= link_to user.name, user_path(user), class: "user_#{user.id}"
+            -else
+              td= link_to user.name, mypage_path(user), class: "user_#{user.id}"
             td= user.gender
             td= (Date.today.strftime("%Y%m%d").to_i - user.birthday.strftime("%Y%m%d").to_i) / 10000
             td

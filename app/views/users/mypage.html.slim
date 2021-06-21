@@ -1,14 +1,14 @@
 .container.px-5.px-sm-0
   .row
     .col-md-3
-      h2
-        | Profile
+      h4
+        | 自分のプロフィール
       = render 'profile', user: current_user
-      h2.mt-3
+      h4.mt-3
         | New presents
       = render 'items/form', item: @item
     .col-md-8.offset-md-1
-      h2
+      h4
         | 自分の投稿一覧
       table.table.table-hover.table-inverse
         thead

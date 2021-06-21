@@ -1,48 +1,46 @@
 .container
-  .row
-    .col-xs-9
-      h4[style="width: 250px;background-color: #f0f6da; text-align: center;"]
+  .row.m-4
+    .col-xs-9.m-4
+      h5[style="width: 250px;background-color: #ffff7f; text-align: center;"]
         | 新規登録
       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         = render "users/shared/error_messages", resource: resource
         .field
-          = f.label :name, "Name"
+          = f.label :name, "ユーザーネーム"
           br
           = f.text_field :name, autofocus: true, autocomplete: "name"
-        .field
-          = f.label :email, "Email"
+        .field.mt-3
+          = f.label :email, "Email", class: "text_aline bottom"
           br
           = f.email_field :email, autofocus: true, autocomplete: "email"
-        .field
-          = f.label :gender, "gender"
+        .field.mt-3
+          = f.label :gender, "性別"
           br
           = f.select :gender, ["男性", "女性", "その他"] ,class: "btn btn-primary"
-        |  　
-        .field
-          |  　
-          = f.label :birthday, "Birthday"
+        .field.mt-3
+          = f.label :birthday, "生年月日(西暦2020年１月１日の場合は20200101とご入力下さい。)"
           br
           = f.text_field :birthday, autofocus: true, autocomplete: "birthday"
-        .field
-          = f.label :icon, "User icon"
+        .field.mt-3
+          = f.label :icon, "アイコン画像"
           br
           = f.attachment_field :icon, placeholder: "user icon"
-        .field
-          = f.label :password, "password（６文字以上）"
+        .field.mt-3
+          = f.label :password, "パスワード（６文字以上）"
           br
           - if @minimum_password_length
 
           = f.password_field :password, autocomplete: "new-password"
         .field
-          = f.label :password_confirmation, "password（確認用）"
+          = f.label :password_confirmation, "パスワード（確認用）"
           br
           = f.password_field :password_confirmation, autocomplete: "new-password"
-        .actions.text-center
-          = f.submit "新規登録", class: "btn btn-success "
+        .actions.mt-3
+          = f.submit "新規登録", class: "btn btn-info "
   .row
-    h4[style="width: 180px;background-color: #f0f6da; text-align: center;"]
+    h5[style="width: 180px;background-color: #ffff7f; text-align: center;"]
       | 既に登録済の方
-  .row
+    br
     = link_to "こちら", new_session_path(resource_name)
     span
       | からログインしてください。

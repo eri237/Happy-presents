@@ -1,4 +1,7 @@
 class SearchController < ApplicationController
-  def search
-  end
+
+	def search
+	  @records = Item.search_for(@content)
+	end
+
 end

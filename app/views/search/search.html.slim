@@ -1,4 +1,7 @@
-h1
-  | Search#search
-p
-  | Find me in app/views/search/search.html.erb
+h3
+  |Item search for
+
+  - if user_signed_in?
+    = render 'items/index', items: @records
+  - else
+    = render 'homes/top', items: @records

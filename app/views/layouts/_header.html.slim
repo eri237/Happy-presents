@@ -1,15 +1,15 @@
 header
-  nav.navbar.navbar-expand-md.navbar-dark.bg-dark
-    .container
-      a.navbar-brand[href="/"]
-        span
-          | Happy-presents
-          #image_tag "logo.png"
-      button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"]
-        span.navbar-toggler-icon
-      #navbarNavDropdown.collapse.navbar-collapse
-        ul.navbar-nav.ml-auto
-          - if user_signed_in?
+  nav.navbar.navbar-expand-md.navbar-dark.bg-info
+    - if user_signed_in?
+      .container
+        a.navbar-brand[href="mypage"]
+          = attachment_image_tag(user, :icon, :fill, 100, 100, fallback: "no-image-icon.jpg")
+          = user.name
+
+        button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"]
+          span.navbar-toggler-icon
+        #navbarNavDropdown.collapse.navbar-collapse
+          ul.navbar-nav.ml-auto
             li
               = link_to ' Mypage',mypage_path(current_user),class: 'fas fa-user nav-link text-light'
             li
@@ -18,9 +18,17 @@ header
               = link_to ' 登録者一覧',users_path ,class: 'fas fa-users nav-link text-light'
             li
               = link_to ' ログアウト', destroy_user_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-light'
-          - else
+    - else
+      .container
+        a.navbar-brand[href="/"]
+          span
+            =image_tag "logo.png"
+        button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"]
+          span.navbar-toggler-icon
+        #navbarNavDropdown.collapse.navbar-collapse
+          ul.navbar-nav.ml-auto
             li
-              = link_to ' About',home_about_path,class: 'fas fa-link nav-link text-light'
+              = link_to ' このサイトについて',home_about_path,class: 'fas fa-link nav-link text-light'
             li
               = link_to ' 新規登録', new_user_registration_path,class: 'fas fa-user-plus nav-link text-light'
             li

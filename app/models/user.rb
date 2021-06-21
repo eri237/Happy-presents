@@ -16,7 +16,8 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower
   # 与フォロー関係を通じて参照→自分がフォローしている人
   has_many :followings, through: :relationships, source: :followed
-
+  
+  
   def follow(user_id)
     relationships.create(followed_id: user_id)
   end
@@ -33,4 +34,9 @@ class User < ApplicationRecord
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :introduction, length: { maximum: 50 }
+  
+  # def self.search_for(content). # 余裕があれば
+  #     User.where(gender: content)
+    
+  # end
 end

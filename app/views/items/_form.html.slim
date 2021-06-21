@@ -3,6 +3,9 @@
     = f.label :欲しいプレゼント
     = f.text_field :name, class: 'form-control item_name'
   .form-group
+    = f.label :欲しい時の年齢
+    = f.select :age_want, [ "0歳", "1歳","2歳","3歳","4歳","5歳","6歳","7歳","8歳","9歳","10歳","11歳","12歳","13歳","14歳","15歳","16歳","17歳","18歳"] ,class: "btn btn-primary"
+  .form-group
     = f.label :詳しい説明
     = f.text_area :description, class: 'form-control item_description'
   .form-group

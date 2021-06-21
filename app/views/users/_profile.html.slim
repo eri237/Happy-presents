@@ -7,10 +7,11 @@
 table.table
   tr
     = attachment_image_tag(user, :icon, :fill, 100, 100, fallback: "no-image-icon.jpg")
+
   tr
     th
-    | 名前
-    th
+      | 名前
+    td
       = user.name
   tr
     th
@@ -34,15 +35,16 @@ table.table
       = user.email
   tr
     th
-  tr
-    th
       = user.followings.count
-    th
       |フォロー中
-  tr
+
     th
       = user.followers.count
-    th
-     |フォロワー
+      |フォロワー
+.row
+  - if current_user == user
+    = link_to '',edit_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}"
+
+  /!=は等しくない ==は等しい
 
 

@@ -5,6 +5,9 @@ class ItemsController < ApplicationController
   def index
     @item = Item.new
     @items = Item.all.order(created_at: :desc)
+    if params[:age_want] != nil
+      @items = Item.search_for(params[:age_want])
+    end
 
   end
 
@@ -22,6 +25,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @item_comment = ItemComment.new
+    @user = @item.user
   end
 
   def edit
@@ -48,7 +52,7 @@ class ItemsController < ApplicationController
    private
 
   def item_params
-    params.require(:item).permit(:name, :description, :image_id, :is_active)
+    params.require(:item).permit(:name, :description, :image_id, :is_active, :age_want)
   end
 
   def ensure_correct_user

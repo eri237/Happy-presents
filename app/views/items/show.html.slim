@@ -1,13 +1,13 @@
 .container.px-5.px-sm-0
   .row
-    .col-md-4
+    .col-md-3
       h4
         | 投稿した人のプロフィール
       = render 'users/profile', user: @user
       h4.mt-3
         | New presents
       = render 'form', item: Item.new
-    .col-md-8
+    .col-md-8.offset-1
       h4
         | 投稿詳細
 
@@ -16,39 +16,38 @@
 
       table
         thead
-          tr
-            th
-            th
+
 
         tbody
           tr
-            td
-              |欲しいプレゼント:
+            th
+              |欲しいプレゼント
             td
               = @item.name
           tr
+            th
+              |欲しい時の歳
             td
-              |欲しい時の年齢:
-            td
-              = @item.age_want
+              = " #{@item.age_want} 歳"
           tr
-            td
-              |詳しい内容:
-            td
-              = @item.description
-          tr
-            td
-              |状況:
+            th
+              |今の状況：
 
             td
               = @item.is_active
-					tr
+          tr
+            th
+              |メモ
+            td
+              = @item.description
+          tr
 					  td.favorite-btn
 					    = render "favorites/favorite", item: @item
 					  td
 					    |コメント数:
 					    = @item.item_comments.count
-					  - if @item.user == current_user
+		.row
+			- if @item.user == current_user
 					    td= link_to 'Edit', edit_item_path(@item), class: "btn btn-sm btn-success edit_item_#{@item.id}"
 					    td= link_to 'Destroy', item_path(@item), method: :delete, data: { confirm: "「#{@item.name}」を削除してよろしいですか？" }, class: "btn btn-sm btn-danger destroy_item_#{@item.id}"
-        = render 'items/comment', item: @item,item_comment: @item_comment
+      = render 'items/comment', item: @item,item_comment: @item_comment

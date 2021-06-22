@@ -2,6 +2,10 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+.container {
+  font-family: Hiragino Maru Gothic Pro;
+}
+
 h4 {
   color: #505050;/*文字色*/
   padding: 0.1em;/*文字周りの余白*/
@@ -84,3 +88,17 @@ h4:before {
   color: white;
   margin-right: 8px;
 }
+
+table tr {
+  background-color: #fff;
+}
+table tbody tr:hover{
+  background-color: #fffae9;
+}
+
+table thead tr{
+  background-color: #FFC107;
+  color:#fff;
+}
+
+

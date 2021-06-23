@@ -26,6 +26,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item_comment = ItemComment.new
     @user = @item.user
+    @User = current_user
   end
 
   def edit
@@ -52,7 +53,7 @@ class ItemsController < ApplicationController
    private
 
   def item_params
-    params.require(:item).permit(:name, :description, :image_id, :is_active, :age_want)
+    params.require(:item).permit(:name, :description, :image, :is_active, :age_want)
   end
 
   def ensure_correct_user

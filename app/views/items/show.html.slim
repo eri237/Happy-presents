@@ -11,41 +11,38 @@
       h4
         | 投稿詳細
 
-      .flex.image_field
-        = attachment_image_tag(@item, :image, format: "jpeg", fallback: "no_image.jpg", class: "item_image")
+      .row
+        .col-md-3
+          = attachment_image_tag(@item, :image, :fill, 150, 150, fallback: "no_image.jpg", class: "item_image")
+        .col-md-9
+          table.show
+            tr.show
+              th.show
+                |欲しいプレゼント
+              td.show
+                = @item.name
+            tr.show
+              th.show
+                |欲しい時の歳
+              td.show
+                = " #{@item.age_want} 歳"
+            tr.show
+              th.show
+                |今の状況
 
-      table
-        thead
-
-
-        tbody
-          tr
-            th
-              |欲しいプレゼント
-            td
-              = @item.name
-          tr
-            th
-              |欲しい時の歳
-            td
-              = " #{@item.age_want} 歳"
-          tr
-            th
-              |今の状況：
-
-            td
-              = @item.is_active
-          tr
-            th
-              |メモ
-            td
-              = @item.description
-          tr
-					  td.favorite-btn
-					    = render "favorites/favorite", item: @item
-					  td
-					    |コメント数:
-					    = @item.item_comments.count
+              td.show
+                = @item.is_active
+            tr.show
+              th.show
+                |メモ
+              td.show
+                = @item.description
+            tr
+					    td.favorite-btn
+					      = render "favorites/favorite", item: @item
+					    td
+					      |コメント数:
+					      = @item.item_comments.count
 		.row
 			- if @item.user == current_user
 					    td= link_to 'Edit', edit_item_path(@item), class: "btn btn-sm btn-success edit_item_#{@item.id}"

@@ -1,12 +1,17 @@
+- if @item.errors.any?
+  = "#{@item.errors.count}件のエラーが発生しました"
+  - @item.errors.full_messages.each do |message|
+    = message
+
 = form_with model:item,local:true do |f|
   .form-group
     = f.label :欲しいプレゼントは？
     = f.text_field :name, class: 'form-control item_name'
   .form-group
-    = f.label :欲しい時の歳は？　　
+    = f.label :欲しい時の歳は？
     = f.select :age_want, [ "0歳", "1歳","2歳","3歳","4歳","5歳","6歳","7歳","8歳","9歳","10歳","11歳","12歳","13歳","14歳","15歳","16歳","17歳","18歳"] ,class: "btn btn-primary"
   .form-group
-    = f.label :今の状況は？　　
+    = f.label :今の状況は？
     = f.select :is_active, ["ほしい", "おねだり中", "もらえた！", "自分で買った"] ,class: "btn btn-primary"
   .form-group
     = f.label :商品画像
@@ -17,4 +22,4 @@
     = f.text_area :description, class: 'form-control item_description'
 
   .form-group
-    = f.submit "Present create", class: 'btn btn-info'
+    = f.submit "ほぞん", class: 'btn btn-info'

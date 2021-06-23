@@ -9,13 +9,14 @@ class Item < ApplicationRecord
 
   scope :recent, -> { order(created_at: :desc) }
 
-  validates :name, presence: true
-  validates :description, presence: true, length: { maximum: 200 }
+  validates :name, presence: true #欲しいitem名を入力しないと登録できない
+  validates :age_want, presence: true#欲しい時の年齢を入力しないと登録できない
+  validates :description, length: { maximum: 200 }
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
-  
+
   def self.search_for(content)
       Item.where(age_want: content)
   end

@@ -2,11 +2,11 @@ header
   nav.navbar.navbar-expand-md.navbar-dark.bg-info
     - if user_signed_in?
       .container
-        a.navbar-brand[href="mypage"]
+        a.navbar-brand[href="/user/mypage"]
           span
-            =image_tag "logo.png"
-            /= attachment_image_tag(user, :icon, :fill, 100, 100, fallback: "no-image-icon.jpg")
-            /= user.name
+            /=image_tag "logo.png"
+            = attachment_image_tag(@User, :icon, :fill, 70, 70, fallback: "no-image-icon.jpg")
+            = @User.name
         button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"]
           span.navbar-toggler-icon
         #navbarNavDropdown.collapse.navbar-collapse

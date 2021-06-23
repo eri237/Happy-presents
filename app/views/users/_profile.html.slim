@@ -1,10 +1,10 @@
       .row
-        .col-md-2
-          = attachment_image_tag(user, :icon, :fill, 100, 100, fallback: "no-image-icon.jpg")
-        .col-md-2
-          = user.name
-      .row
         table.table
+          tr
+            th
+              = attachment_image_tag(user, :icon, :fill, 80, 80, fallback: "no-image-icon.jpg")
+            th.text1
+              = user.name
           tr
             th
               | 自己紹介

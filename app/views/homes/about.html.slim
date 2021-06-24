@@ -4,12 +4,22 @@
         | このサイトについて
     br
     h5
-      |　　「Happy-presents!」は、0歳から18歳の子供たちが欲しいプレゼントを画像付きで投稿するサイトです。<br>
+      | 「Happy-presents!」は、0歳から18歳の子供たちが欲しいプレゼントを画像付きで投稿するサイトです。<br>
        　PCやスマートホンが扱えない年齢の場合は近親者が投稿可能です。<br>
-       　子供へのプレゼントに悩んでいる方々、ぜひご活用ください。<br>
-       　欲しい物を登録するには会員登録が必要です。<br>
-       　　会員登録は、
-      = link_to "こちら", new_user_registration_path
-      span
-        |からどうぞ。
+       　会員登録していただくと、投稿した欲しいものの状況管理も可能です。<br>
+       　子供へのプレゼントに悩んでいる方々、ぜひご活用ください。<br><br>
+
+       　欲しい物を登録するには会員登録が必要です。<br><br>
+
+
+    h6
+      | 会員登録して欲しい物を登録したい方はこちら<br>
+      = link_to '新規会員登録',new_user_registration_path,class: "btn btn-warning btn-block"
+      br
+      | すでに既に会員登録がお済みの方はこちら<br>
+      = link_to 'ログイン',new_user_session_path,class: "btn btn-info btn-block"
+      br
+      | 登録せずに閲覧だけする方はこちら<br>
+      = link_to '投稿一覧',root_path,class: "btn btn-secondary btn-block"
+
 

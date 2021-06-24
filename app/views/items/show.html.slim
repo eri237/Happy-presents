@@ -47,6 +47,6 @@
 		  .row
 		    .col-md-9.col-offset-5
 			- if @item.user == current_user
-					    td= link_to 'へんしゅう', edit_item_path(@item), class: "btn btn-sm btn-outline-warning edit_item_#{@item.id}"
-					    td= link_to 'さくじょ', item_path(@item), method: :delete, data: { confirm: "「#{@item.name}」を削除してよろしいですか？" }, class: "btn btn-sm btn-outline-danger destroy_item_#{@item.id}"
+					    td= link_to 'へんしゅう', edit_item_path(@item), class: "btn btn-sm btn-info edit_item_#{@item.id}"
+					    td= link_to 'さくじょ', item_path(@item), method: :delete, data: { confirm: "「#{@item.name}」を削除してよろしいですか？" }, class: "btn btn-sm btn-danger destroy_item_#{@item.id}"
       = render 'items/comment', item: @item,item_comment: @item_comment

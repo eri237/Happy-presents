@@ -3,15 +3,17 @@ class FavoritesController < ApplicationController
 
   def create
     @item = Item.find(params[:item_id])
-    favorite = @item.favorites.new(user_id: current_user.id)
-    favorite.save
-    redirect_to request.referer
+    unless @item.favorited_by?(current_user)
+      favorite = current_user.favorites.new(item_id: @item.id)
+      favorite.save
+    end
+    # redirect_to request.referer　非同期通信のためさくじょ
   end
 
   def destroy
     @item = Item.find(params[:item_id])
-    favorite = @item.favorites.find_by(user_id: current_user.id)
+    favorite = current_user.favorites.find_by(item_id: @item.id)
     favorite.destroy
-    redirect_to request.referer
+    # redirect_to request.referer 非同期通信のためさくじょ
   end
 end

@@ -36,7 +36,7 @@
           tr
             td.text-center= item.age_want
             td.text-center= item.user.gender
-            td.text-right= attachment_image_tag(item, :image, :fill, 60, 60, fallback: "no_image.jpg")
+            td.text-right= attachment_image_tag(item, :image, :fill, 70, 70, fallback: "no_image_mini.png")
             td.text-center= item.name
             td= item.description
             td.text-center= item.created_at.strftime('%Y/%m/%d %H:%M')

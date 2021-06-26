@@ -38,19 +38,19 @@
           - @items.each do |item|
             tr
               td.text-center= link_to user_path(item.user) do
-                = attachment_image_tag(item.user, :icon, :fill, 50, 50, fallback: "no-image-icon.jpg")
+                = attachment_image_tag(item.user, :icon, :fill, 50, 50, fallback: "no-image-icon.png")
                 br
                 = item.user.name
                 br
                 = item.user.gender
 
               td= link_to item_path(item) do
-                = attachment_image_tag(item, :image, :fill, 50, 50, fallback: "no-image-mini.jpg")
+                = attachment_image_tag(item, :image, :fill, 70, 70, fallback: "no_image_mini.png")
               td= link_to item.name, item_path(item), class: "item_#{item.id}"
               td.text-center= item.age_want
               td= item.description
               td= item.created_at.strftime('%Y/%m/%d %H:%M')
-              td.favorite-btn
+              td id= 'favorite_#{ item.id }'
                 = render "favorites/favorite", item: item
               td
                 |💬

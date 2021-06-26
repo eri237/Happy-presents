@@ -13,13 +13,15 @@
 
       .row
         .col-md-3
-          = attachment_image_tag(@item, :image, :fill, 150, 150, fallback: "no_image.jpg", class: "item_image")
-          tr
-					  td.favorite-btn
-				      = render "favorites/favorite", item: @item
-					  td
-					    |コメント数:
-					    = @item.item_comments.count
+          = attachment_image_tag(@item, :image, :fill, 150, 150, fallback: "no_image.png", class: "item_image")
+          table.table.table-hover.table-inverse
+            tbody
+              tr
+					      td id= 'favorite_#{ @item.id }'
+				             = render "favorites/favorite", item: @item
+					      td
+					        |💬
+					        = @item.item_comments.count
         .col-md-9
           table.show
             tr.show

@@ -1,8 +1,8 @@
-      .row
+ .row
         table.table
           tr
             th
-              = attachment_image_tag(user, :icon, :fill, 80, 80, fallback: "no-image-icon.jpg")
+              = attachment_image_tag(user, :icon, :fill, 80, 80, fallback: "no-image-icon.png")
             th.text1
               = user.name
           tr
@@ -34,15 +34,15 @@
               = user.followers.count
               |フォロワー
 
-      - if current_user != user
-        - if current_user.following?(user)
-          = link_to "フォロー外す", user_relationships_path(user.id), method: :delete, class: "btn btn-info btn-block"
-        - else
-          = link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-outline-info btn-block"
-      .row
-        - if current_user == user
-          = link_to 'プロフィールへんしゅう',edit_path(user),class: "btn btn-info btn-block edit_user_#{user.id}"
+        - if current_user != user
+          tr
+            th
+          - if current_user.following?(user)
+              = link_to "フォロー外す", user_relationships_path(user.id), method: :delete, class: "btn btn-info btn-block"
+          - else
+              = link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-outline-info btn-block"
+        .row
+          - if current_user == user
+            = link_to 'プロフィールへんしゅう',edit_path(user),class: "btn btn-info btn-block edit_user_#{user.id}"
 
           /!=は等しくない ==は等しい
-
-

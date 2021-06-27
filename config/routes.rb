@@ -22,8 +22,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show] do
   	resource :relationships, only: [:create, :destroy]
-  # 	get 'followings' => 'relationships#followings', as: 'followings' #余裕があれば
-  # 	get 'followers' => 'relationships#followers', as: 'followers' # 余裕があれば
+   	get 'followings' => 'relationships#followings', as: 'followings' #余裕があれば
+   	get 'followers' => 'relationships#followers', as: 'followers' # 余裕があれば
   end
 
 

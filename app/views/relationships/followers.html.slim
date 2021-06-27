@@ -1,9 +1,10 @@
 .container.px-5.px-sm-0
   .row
-    h4
-      |フォロワー
-    - if @users.exists?
-      = render '/users/index', users: @users
-    - else
-      p
-        |ユーザーはいません
+    .col-md-9
+      h4
+        |フォロワー
+      - if @users.exists?
+        = render '/users/index', users: @users
+      - else
+        p
+          |ユーザーはいません

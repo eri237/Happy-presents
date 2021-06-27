@@ -1,0 +1,9 @@
+.container.px-5.px-sm-0
+  .row
+    h4
+      |フォロー中
+    - if @users.exists?
+      = render '/users/index', users: @users
+    - else
+      p
+       |ユーザーはいません

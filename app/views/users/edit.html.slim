@@ -6,27 +6,27 @@
   = form_with model: @user, url:update_path, local: true do |f|
     = attachment_image_tag @user, :icon, class: "img-square", fallback: "no-image-icon.jpg", size:"100x100"
     .form-group
-      = f.label :icon, "User icon"
+      = f.label :icon, "ユーザーアイコン"
       br
       = f.attachment_field :icon, placeholder: "user icon"
     .form-group
-      = f.label :name, "Name"
+      = f.label :name, "ユーザーネーム"
       br
       = f.text_field :name, class: "form-control name"
     .form-group
-      = f.label :introduction
+      = f.label :introduction, "自己紹介"
       = f.text_area :introduction, class: "form-control introduction"
     .form-group
       = f.label :email, "Email"
       br
       = f.email_field :email, class: "form-control email"
     .form-group
-      = f.label :gender, "gender"
+      = f.label :gender, "性別"
       br
       = f.select :gender, ["男性", "女性", "その他"] ,class: "btn btn-primary"
     |
     .form-group
-      = f.label :birthday, "Birthday"
+      = f.label :birthday, "生年月日"
       br
       = f.text_field :birthday, class: "form-control birthday"
     .row

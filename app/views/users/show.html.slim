@@ -4,9 +4,7 @@
       h4
         | プロフィール
       = render 'profile', user: @user
-      h4.mt-3
-        | New presents
-      = render 'items/form', item: @item
+      
     .col-md-9
       h4= "「#{@user.name}」 さんの投稿一覧"
       table.table

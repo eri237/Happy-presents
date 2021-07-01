@@ -14,6 +14,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.user_id = current_user.id
+    item.score = Language.get_data(item_params[:name, :description])  #AI機能この行を追加
     if @item.save
       redirect_to mypage_path(@item), notice: "You have created present successfully."
     else

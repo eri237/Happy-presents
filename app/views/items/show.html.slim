@@ -45,6 +45,16 @@
                 |メモ
               td.show
                 = @item.description
+            tr.show
+              th.show
+               .entities
+                 |エンティティ分析
+              td.show
+                = @item.entities_name
+                br
+                = @item.type
+                br
+                = @item.metadata
       br
 		  .row
 		    .col-md-9.col-offset-5

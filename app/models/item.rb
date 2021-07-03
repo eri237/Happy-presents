@@ -4,6 +4,8 @@ class Item < ApplicationRecord
   has_many :item_comments, dependent: :destroy
 
   enum is_active: {ほしい:0, おねだり中:1, もらえた！:2, 自分で買った:3 }
+  #enum type: {不明:UNKNOWN, 人物:PERSON, 場所:LOCATION, 組織:ORGANIZATION, イベント:EVENT, 芸術作品:WORK_OF_ART, 商品:CONSUMER_GOOD, その他:OTHER, 電話番号:PHONE_NUMBER, 住所:ADDRESS, 日付:DATE, 数字:NUMBER, 価格:PRICE}
+  self.inheritance_column = :_type_disabled # この行を追加
 
   attachment :image, destroy: false
 

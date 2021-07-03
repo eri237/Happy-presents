@@ -47,10 +47,14 @@
                 = @item.description
             tr.show
               th.show
-               .entities-score
+               .entities
                  |エンティティ分析
               td.show
-                = @item.score
+                = @item.entities_name
+                br
+                = @item.type
+                br
+                = @item.metadata
       br
 		  .row
 		    .col-md-9.col-offset-5
